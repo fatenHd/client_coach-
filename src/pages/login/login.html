@@ -1,0 +1,43 @@
+<ion-header>
+    <ion-navbar color="primary">
+        <ion-title>
+            Log In
+        </ion-title>
+    </ion-navbar>
+</ion-header>
+<ion-content padding>
+    
+    <form [formGroup]="loginForm" (submit)="loginUser()" novalidate>
+	<ion-item>
+	<ion-label stacke> {{'Name' | translate }} </ion-label>
+	<ion-input formControlName ="userName" type="userName" placeholder="{{'Your_name' | translate }}" minlength="3" maxlength ="20"></ion-input>
+	</ion-item>
+        <ion-item>
+            <ion-label stacked> {{'Email' | translate }} </ion-label>
+            <ion-input formControlName="email" type="email" placeholder="{{'Your_email_address' | translate }}"
+                       [class.invalid]="!loginForm.controls.email.valid && loginForm.controls.email.dirty"></ion-input>
+        </ion-item>
+        <ion-item class="error-message"
+                  *ngIf="!loginForm.controls.email.valid  && loginForm.controls.email.dirty">
+            <p>{{'Please_enter_a_valid_email' | translate }}</p>
+        </ion-item>
+        <ion-item>
+            <ion-label stacked> {{'Password' | translate }} </ion-label>
+            <ion-input formControlName="password" type="password" placeholder="{{'Your_password' | translate }}"
+                       [class.invalid]="!loginForm.controls.password.valid && loginForm.controls.password.dirty"></ion-input>
+        </ion-item>
+        <ion-item class="error-message"
+                  *ngIf="!loginForm.controls.password.valid  && loginForm.controls.password.dirty">
+            <p>{{'Your_password_needs_more_than_6_characters' | translate }} </p>
+        </ion-item>
+        <button ion-button block type="submit" [disabled]="!loginForm.valid">
+            {{'Login' | translate }} 
+        </button>
+    </form>
+    <button ion-button block clear (click)="goToSignup()">
+        {{'Create_new_account' | translate }}
+    </button>
+    <button ion-button block clear (click)="goToResetPassword()">
+        {{'I_forgot_my_password' | translate }}
+    </button>
+</ion-content>

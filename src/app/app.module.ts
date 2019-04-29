@@ -6,7 +6,13 @@ import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
-
+import { AngularFireModule } from '@angular/fire'; 
+import { AngularFirestoreModule } from '@angular/fire/firestore'; 
+import { AngularFireAuthModule } from '@angular/fire/auth'; 
+import { firebaseConfig } from './credentials'; 
+import {FCM} from '@ionic-native/fcm';
+import { MomentModule } from 'ngx-moment';
+import { AuthProvider } from '../providers/auth/auth'; 
 @NgModule({
   declarations: [
     MyApp,
@@ -14,7 +20,11 @@ import { HomePage } from '../pages/home/home';
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+	AngularFireModule.initializeApp(firebaseConfig), 
+	AngularFirestoreModule, 
+	AngularFireAuthModule, 
+	MomentModule,
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -24,7 +34,9 @@ import { HomePage } from '../pages/home/home';
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+	FCM,
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    AuthProvider
   ]
 })
 export class AppModule {}
