@@ -12,7 +12,8 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { firebaseConfig } from './credentials'; 
 import {FCM} from '@ionic-native/fcm';
 import { MomentModule } from 'ngx-moment';
-import { AuthProvider } from '../providers/auth/auth'; 
+import { AuthProvider } from '../providers/auth/auth';
+import { ClientProvider } from '../providers/client/client'; 
 @NgModule({
   declarations: [
     MyApp,
@@ -36,7 +37,8 @@ import { AuthProvider } from '../providers/auth/auth';
     SplashScreen,
 	FCM,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    AuthProvider
+    AuthProvider,
+    ClientProvider
   ]
 })
 export class AppModule {}

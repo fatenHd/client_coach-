@@ -34,7 +34,7 @@ export class signup {
 //alert("please verify your email ")
                     this.loading.dismiss().then(() => {
                         console.log('login successful');
-						this.navCtrl.push('HomePage');
+						this.navCtrl.push(HomePage);
                     });
                 }, (error) => {
                     this.loading.dismiss().then(() => {
